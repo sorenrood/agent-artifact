@@ -6,17 +6,40 @@
     <title>Web Agent Timeline</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         body {
-            background-color: #121212;
-            color: #ffffff;
+            background-color: rgb(28, 28, 28);
+            color: #fff; /* Set text color to white for better visibility */
+            font-family: 'Inter', sans-serif;
         }
         .navbar, .footer {
             background-color: #1e1e1e;
         }
-        .btn-fork {
-            background-color: #4a4a4a;
-            color: #ffffff;
+        .navbar .form-control {
+            background-color: #333;
+            border-color: #444;
+            color: #fff;
+            width: 450px;
+        }
+        .navbar .form-control::placeholder {
+            color: #aaa;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+        .btn-outline-light:hover {
+            background-color: #555;
+        }
+        @media (max-width: 992px) {
+            .navbar .form-control {
+                width: 300px;
+            }
         }
         .timeline {
             position: relative;
@@ -26,10 +49,9 @@
         }
         .timeline-item {
             background-color: #242424;
-            transition: background-color 0.2s ease;
-            padding: 0;
-            position: relative;
-            border-radius: 6px;
+            transition: all 0.3s ease;
+            padding: 15px;
+            border-radius: 8px;
             cursor: pointer;
             opacity: 0;
             transform: translateY(20px);
@@ -39,24 +61,28 @@
             margin-bottom: 30px;
             margin-left: 4%;
             margin-right: 4%;
-            font-size: 0.9em !important;
             min-height: 100px;
+            border: 1px solid #3a3a3a;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         .timeline-item-content {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
             width: 100%;
             text-align: center;
             padding: 0 20px;
         }
         .timeline-item h3 {
             margin: 0;
-            font-size: 0.9em !important;
+            font-size: 1.2em;
+            font-weight: 600;
+            color: #e0e0e0;
         }
         .timeline-item:hover {
             background-color: #2a2a2a;
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
         }
         @keyframes fadeInUp {
             to {
@@ -111,13 +137,20 @@
         .timeline-item:nth-child(even)::after {
             left: -10px;
         }
+        .text-light {
+            color: #fff !important;
+        }
     </style>
 </head>
 <body class="d-flex flex-column min-vh-100">
     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">Web Agent Company</a>
-            <button class="btn btn-fork">Execute Workflow</button>
+            <button class="btn btn-primary me-2">Execute Workflow</button>
+            <div class="d-flex mx-4">
+                <input type="text" class="form-control me-2" placeholder="What do you want to accomplish?">
+                <button class="btn btn-outline-light">Search</button>
+            </div>
             <div class="ms-auto">
                 <i class="fas fa-user-circle fa-2x text-light"></i>
             </div>
@@ -125,11 +158,12 @@
     </nav>
     <main class="flex-shrink-0">
         <div class="container mt-5">
-            <h1 class="text-center mb-4">Get the price of VOO and send a text to the user</h1>
+            <h1 class="text-center mb-2">Get the price of VOO and send a text</h1>
+            <p class="text-center text-light mb-4">Executed at 8:32 PM on August 26th, 2024</p>
             <div class="timeline mt-5">
                 <div class="timeline-item" style="--animation-order: 1" data-bs-toggle="modal" data-bs-target="#detailModal" data-title="Visit google.com" data-description="The web agent navigates to google.com to begin the search process." data-subtext="Executed on July 13th, 2024.">
                     <div class="timeline-item-content">
-                        <h3>Visit google.com</h3>
+                        <h3>Navigate to google.com</h3>
                     </div>
                 </div>
                 <div class="timeline-item" style="--animation-order: 2" data-bs-toggle="modal" data-bs-target="#detailModal" data-title="Search 'price of VOO'" data-description="The agent enters the search query 'price of VOO' into the Google search bar." data-subtext="Executed on July 13th, 2024.">
